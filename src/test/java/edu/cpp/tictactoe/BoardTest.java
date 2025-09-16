@@ -149,5 +149,26 @@ public class BoardTest {
 
     }
 
+    @Test
+    public void outOfBoundsRowDetected() {
+        Board b = new Board();
+
+        // Row is out of bounds (board is 3x3, so valid rows are 0–2)
+        assertThrows(IllegalArgumentException.class, () -> {
+            b.place(new Move(3, 0, Mark.X));
+        });
+    }
+
+    @Test
+    public void outOfBoundsColumnDetected() {
+        Board b = new Board();
+
+        // Column is out of bounds
+        assertThrows(IllegalArgumentException.class, () -> {
+            b.place(new Move(0, -1, Mark.O));
+        });
+    }
+
+
 
 }
